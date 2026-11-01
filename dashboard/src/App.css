@@ -42,7 +42,37 @@ body {
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.25rem;
+}
+
+/* Gateway Live Pill */
+.gateway-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.8rem;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.gateway-pill.online {
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid #10b981;
+  color: #10b981;
+}
+
+.gateway-pill.offline {
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid #ef4444;
+  color: #ef4444;
+}
+
+.gateway-pill .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: currentColor;
 }
 
 .timestamp {
@@ -53,18 +83,14 @@ body {
 .refresh-btn {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.4rem;
   background-color: #2563eb;
   color: white;
   border: none;
   border-radius: 6px;
-  padding: 0.45rem 0.9rem;
+  padding: 0.45rem 0.85rem;
   cursor: pointer;
   font-weight: 500;
-}
-
-.refresh-btn:hover {
-  background-color: #1d4ed8;
 }
 
 .dashboard-content {
@@ -74,6 +100,134 @@ body {
   gap: 1.5rem;
 }
 
+/* Banner */
+.gateway-banner {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 0.9rem 1.5rem;
+  display: flex;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.banner-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.banner-item strong {
+  color: var(--text-main);
+}
+
+.pending-badge {
+  background: rgba(245, 158, 11, 0.15);
+  color: #f59e0b !important;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+/* Telemetry Section */
+.stats-strip {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.25rem;
+}
+
+.stats-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.stats-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.stats-title h4 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.burst-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(59, 130, 246, 0.15);
+  border: 1px solid #3b82f6;
+  color: #60a5fa;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.burst-btn:hover {
+  background: rgba(59, 130, 246, 0.3);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.stat-box {
+  background: #0f172a;
+  border: 1px solid var(--border-color);
+  padding: 0.85rem 1rem;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.stat-label {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.stat-num {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.stat-box.success .stat-num { color: #10b981; }
+.stat-box.error .stat-num { color: #ef4444; }
+.stat-box.blocked .stat-num { color: #f59e0b; }
+
+/* Offline Warning */
+.offline-alert {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid #f59e0b;
+  color: #fde68a;
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+}
+
+.offline-alert p {
+  margin: 0.3rem 0 0 0;
+  font-size: 0.85rem;
+  color: #fcd34d;
+}
+
+/* Metric Cards */
 .grid-cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -101,28 +255,6 @@ body {
   font-weight: 700;
 }
 
-.gateway-banner {
-  background-color: var(--bg-card);
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  padding: 0.9rem 1.5rem;
-  display: flex;
-  gap: 2.5rem;
-  flex-wrap: wrap;
-}
-
-.banner-item {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.9rem;
-  color: var(--text-muted);
-}
-
-.banner-item strong {
-  color: var(--text-main);
-}
-
 .dashboard-grid {
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -145,6 +277,14 @@ body {
 .panel h3 {
   margin-top: 0;
   font-size: 1.1rem;
+}
+
+.empty-message {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-style: italic;
+  padding: 1.5rem 0;
+  text-align: center;
 }
 
 .panel-title-group {
