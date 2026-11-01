@@ -389,3 +389,46 @@ body {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+/* Active OAuth2 + JWT authentication badge */
+.active-badge {
+  background: rgba(16, 185, 129, 0.15);
+  color: #10b981 !important;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+/* Visible results from the NGINX burst-rate-limit demonstration */
+.burst-result {
+  margin-top: 1rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background: #0f172a;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.burst-result-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(125px, 1fr));
+  gap: 0.55rem 1rem;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.burst-result-grid b { color: var(--text-main); }
+.burst-result-grid .result-success { color: #10b981; }
+.burst-result-grid .result-blocked { color: #f59e0b; }
+
+.burst-verdict {
+  color: #f59e0b;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.burst-verdict.pass { color: #10b981; }
+.burst-btn:disabled { opacity: 0.65; cursor: wait; }
