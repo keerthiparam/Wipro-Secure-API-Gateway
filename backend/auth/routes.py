@@ -2,7 +2,7 @@ import hmac
 
 from flask import Blueprint, jsonify, request
 
-from .config import CLIENT_ID, CLIENT_SECRET
+from .config import CLIENT_ID, CLIENT_SECRET, JWT_EXPIRY_SECONDS
 from .jwt_handler import create_access_token, validate_access_token
 
 
@@ -60,12 +60,10 @@ def issue_token():
             "error": "server_configuration_error"
         }), 500
 
-    from .config import ACCESS_TOKEN_EXPIRES_IN
-
     return jsonify({
         "access_token": token,
         "token_type": "Bearer",
-        "expires_in": ACCESS_TOKEN_EXPIRES_IN,
+        "expires_in": JWT_EXPIRY_SECONDS,
     }), 200
 
 
