@@ -6,6 +6,7 @@ from routes.devices import device_bp
 from routes.metrics import metrics_bp
 from routes.alerts import alerts_bp
 from routes.monitoring import monitoring_bp
+from auth.routes import auth_bp
 
 app = Flask(__name__)
 
@@ -19,7 +20,7 @@ app.register_blueprint(device_bp)
 app.register_blueprint(metrics_bp)
 app.register_blueprint(alerts_bp)
 app.register_blueprint(monitoring_bp)
-
+app.register_blueprint(auth_bp)
 
 @app.route("/")
 def home():
